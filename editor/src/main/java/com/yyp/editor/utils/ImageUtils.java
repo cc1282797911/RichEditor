@@ -7,9 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IdRes;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.Base64;
+
+import androidx.annotation.IdRes;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import java.io.ByteArrayOutputStream;
 

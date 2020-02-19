@@ -6,8 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.IdRes;
-import android.support.annotation.IntRange;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -18,6 +16,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.IntRange;
 
 import com.yyp.editor.config.EditorOpType;
 import com.yyp.editor.interfaces.AfterInitialLoadListener;
@@ -79,6 +80,16 @@ public class RichEditor extends WebView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             cookieManager.setAcceptThirdPartyCookies(this, true);
         }
+
+        /*getSettings().setAllowUniversalAccessFromFileURLs(true);
+        getSettings().setAllowFileAccess(true);
+        getSettings().setAllowFileAccessFromFileURLs(true);
+        getSettings().setBlockNetworkImage(false);
+        getSettings().setBlockNetworkImage(false);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getSettings().setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }*/
+
         loadUrl(SETUP_HTML);
 
         applyAttributes(context, attrs);

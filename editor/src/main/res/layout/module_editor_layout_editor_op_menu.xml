@@ -148,7 +148,7 @@
         android:layout_height="1dp"
         android:background="@color/_f0f0f0"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_editor_materials_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

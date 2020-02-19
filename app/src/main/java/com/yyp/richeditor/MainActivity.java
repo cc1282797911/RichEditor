@@ -1,8 +1,13 @@
 package com.yyp.richeditor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Environment;
 import android.view.View;
+import android.webkit.CookieManager;
 import android.widget.EditText;
 
 import com.yyp.editor.RichEditor;
@@ -12,7 +17,10 @@ import com.yyp.editor.interfaces.OnMaterialsItemClickListener;
 import com.yyp.editor.interfaces.OnTextChangeListener;
 import com.yyp.editor.widget.EditorOpMenuView;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.File;
+import java.net.CookieStore;
+
+public class MainActivity extends Activity {
 
     private RichEditor mEditor;
     private EditorOpMenuView mEditorOpMenuView;
@@ -53,7 +61,13 @@ public class MainActivity extends AppCompatActivity {
             public void onMaterialsItemClick(MaterialsMenuBean bean) {
                 switch (bean.getId()){
                     case MATERIALS_IMAGE: //从素材图片库选择 最大3个
-                        mEditor.insertImage("", ""); //插入图片到编辑器
+                        //String uri = "file:///android_asset/photo.png";
+                        String uri = "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1208538952,1443328523&fm=26&gp=0.jpg";
+                        uri = "photo.png";
+                        //uri = "file://"+ Environment.getExternalStorageDirectory()+ File.separator + "photo.png";
+                        //uri = "file://"+ "/storage/emulated/0/DCIM/Camera/IMG_20200218_074502.jpg";
+                        //boolean i = new File("storage/emulated/0/DCIM/Camera/IMG_20200218_074502.jpg").exists();
+                        mEditor.insertImage(uri, "IMG_20200218_074502.jpg"); //插入图片到编辑器
                         break;
                     case MATERIALS_VIDEO: //从素材视频库选择 最大3个
                         mEditor.insertVideoFrame("视频封面地址",
@@ -69,4 +83,9 @@ public class MainActivity extends AppCompatActivity {
         mEditor.setHtml("拔份儿发热父加好友恢复日发货人官方规划区");
 //        mEditor.disableEdit();
     }
+
+    public void toHtml(View view){
+        new AlertDialog.Builder(this).setMessage(mEditor.getHtml()).create().show();
+    }
+
 }
